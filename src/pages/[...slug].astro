@@ -1,0 +1,56 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { MarkdownPage, TabPage } from '../types/content';
+
+import Layout from '@layouts/Layout.astro';
+import ContentView from '@components/ContentView.tsx';
+import Footer from '@components/Footer.astro';
+import { buildFileTree } from 'src/util/trie.ts'
+
+interface Props {
+  slug: string;
+}
+
+
+export const getStaticPaths = (() => {
+  const DEFAULT_PAGE = '/about';
+  const pageGlob = import.meta.glob<MarkdownPage>(
+    '../content/pages/**/*.md',
+    { eager: true }
+  );
+  const markdownPages = Object.values(pageGlob);
+  return markdownPages.map(page => ({ params: { slug: page.url || DEFAULT_PAGE } }));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+
+// Generate pages to send to Preact component
+const pageGlob = import.meta.glob<MarkdownPage>(
+  '../content/pages/**/*.md',
+  { eager: true }
+);
+const values = Object.values(pageGlob);
+const pagePromises = values.map(async page => ({
+  slug: page.url,
+  title: page.frontmatter.title,
+  content: await page.compiledContent(),
+} as TabPage));
+
+const pages = await Promise.all(pagePromises);
+
+const fileTree = buildFileTree(pages);
+---
+
+<Layout>
+  <ContentView 
+    fileTree={fileTree}
+    pages={pages}
+    slug={'/' + slug}
+    client:visible
+  />
+  <Footer/>
+</Layout>
+
+<script>
+
+</script>

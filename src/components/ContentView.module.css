@@ -1,0 +1,51 @@
+.componentContainer {
+  display: flex;
+  height: 100%
+}
+
+.fileTreeContainer {
+  padding: 0 0.5rem;
+  background-color: var(--bg_dark);
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.tabListContainer {
+  flex: 0 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: var(--bg_dark);
+}
+
+.pageTab {
+  padding: 0.5rem;
+
+  color: var(--fg_gutter);
+  text-align: center;
+  text-decoration: none;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pageTab:hover {
+  background-color: var(--bg_highlight)
+}
+
+.activeTab {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.mdContainer {
+  padding: 1rem;
+  overflow: auto;
+}
+
+

@@ -1,0 +1,28 @@
+.componentContainer {
+  margin-left: 1rem;
+}
+
+.folderSpan {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.fileButton {
+  display: block;
+  margin: 0.2rem 0;
+
+  text-decoration: none;
+
+  color: var(--fg_gutter);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.fileButton:hover {
+  color: var(--fg);
+}
+
+.purpleText {
+  color: var(--purple);
+}

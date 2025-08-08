@@ -1,0 +1,97 @@
+import type { TabPage } from 'src/types/content';
+import type { TrieNode } from 'src/types/trie';
+
+import { useEffect, useState } from 'preact/hooks';
+import styles from './ContentView.module.css';
+import FileTree from './FileTree';
+
+interface Props {
+  fileTree: TrieNode[];
+  pages: TabPage[];
+  slug: string;
+}
+
+const ContentView= ({ pages, slug, fileTree }: Props) => {
+  // NOTE: Should never be undefined as all slugs are determined at build time
+  const activePage = pages.find(p => p.slug === slug)
+
+  const [activeTab, setActiveTab] = useState(activePage!); 
+  const [openPages, setOpenPages] = useState(activePage ? [activePage] : []);
+
+  const openPage = (slug: string) => {
+    const activePage = pages.find(p => p.slug === slug)!
+    if (!openPages.some(p => p.slug === activePage.slug)) {
+      setOpenPages(p => [...p, activePage]) 
+    }
+    setActiveTab(activePage);
+  }
+
+  const closeTab = (slug: string) => {
+    setOpenPages(prevPages => {
+      const newPages = prevPages.filter(p => p.slug !== slug);
+
+      if (newPages.length === 0) {
+        return prevPages;
+      }
+
+      // Only update active tab if we're closing the current one
+      if (slug === activeTab.slug) {
+        const closedTabIndex = prevPages.findIndex(p => p.slug === slug);
+
+        // If there are still tabs left after closing
+        if (newPages.length > 0) {
+          // Prefer next tab if it exists, otherwise previous one
+          const nextIndex = Math.min(closedTabIndex, newPages.length - 1);
+          console.log(newPages[nextIndex]);
+          setActiveTab(newPages[nextIndex]);
+        }
+      }
+
+      return newPages;
+    });
+  };
+
+
+  useEffect(() => {
+    history.pushState({}, '', activeTab.slug);
+  }, [activeTab]);
+
+  return (
+    <div class={styles.componentContainer}>
+      <div class={styles.fileTreeContainer}>
+        <h3>File Tree</h3>
+        {fileTree.map(tree => (
+          <FileTree node={tree} activeTab={activeTab.slug} click={openPage}/>
+        ))}
+      </div>
+      <div class={styles.contentContainer}>
+        <div class={styles.tabListContainer}>
+          {openPages.map(page => (
+            <button
+              onClick={() => setActiveTab(page)}
+              class={`${styles.pageTab} ${page.slug === activeTab.slug && styles.activeTab}`}
+            >
+              {page.slug || 'index'}.md
+              <span
+                onClick={e => { e.stopPropagation(); closeTab(page.slug) }}
+                style={{ padding: '0.5rem' }}
+              >
+                ✖
+              </span>
+            </button>
+          ))}
+        </div>
+        <div 
+          class={styles.mdContainer}
+          dangerouslySetInnerHTML={{
+            __html: activeTab.content
+          }}
+        >
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ContentView;
+

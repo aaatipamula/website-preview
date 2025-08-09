@@ -1,7 +1,7 @@
 import type { TabPage } from 'src/types/content';
 import type { TrieNode } from 'src/types/trie';
 
-function buildFileTree(pages: TabPage[]) {
+export function buildFileTree(pages: TabPage[]) {
   const root: TrieNode[] = [];
 
   for (const page of pages) {
@@ -29,6 +29,4 @@ function buildFileTree(pages: TabPage[]) {
 
   return root;
 }
-
-export { buildFileTree };
 

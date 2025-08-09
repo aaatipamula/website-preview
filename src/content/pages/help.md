@@ -23,4 +23,4 @@ If you are on *mobile* you can still click links and buttons like normal!
 
 The keyboard you see is actually a reflection of my split keyboard layout! As you press the keys the corresponding keys for my specific keymap will be shown :)
 
-This site is statically generated using **Jekyll, TailwindCSS, and htmx**
+This site is statically generated using **Astro and Preact**

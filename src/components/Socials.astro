@@ -1,0 +1,55 @@
+---
+interface Props {
+  linkedin?: string;
+  twitter?: string;
+  github?: string;
+  instagram?: string;
+  youtube?: string;
+  discord?: string;
+}
+
+const { linkedin, twitter, github, instagram, youtube, discord } = Astro.props;
+---
+
+{linkedin && (
+  <a href={linkedin}>
+    <i class="bi bi-linkedin"></i>
+  </a>
+)}
+
+{twitter && (
+  <a href={twitter}>
+    <i class="bi bi-twitter"></i>
+  </a>
+)}
+
+{github && (
+  <a href={github}>
+    <i class="bi bi-github"></i>
+  </a>
+)}
+
+{instagram && (
+  <a href={instagram}>
+    <i class="bi bi-instagram"></i>
+  </a>
+)}
+
+{youtube && (
+  <a href={youtube}>
+    <i class="bi bi-youtube"></i>
+  </a>
+)}
+
+{discord && (
+  <a href={discord}>
+    <i class="bi bi-discord"></i>
+  </a>
+)}
+
+<style>
+a {
+  padding: 0.3rem;
+  margin: 0 0.2rem;
+}
+</style>

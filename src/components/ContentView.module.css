@@ -29,6 +29,7 @@
   text-align: center;
   text-decoration: none;
 
+  font: inherit;
   background: none;
   border: none;
   cursor: pointer;
@@ -48,4 +49,18 @@
   overflow: auto;
 }
 
+.websiteHeader {
+  font: inherit;
+  color: var(--teal);
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+
+  background: none;
+  cursor: pointer;
+  border: 1px var(--blue7) solid;
+  border-radius: 3px;
+
+  padding: 0.7rem;
+}
 

@@ -1,13 +1,19 @@
 ---
 import CommonHead from "../components/CommonHead.astro";
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-  <CommonHead/>
-	<body>
-		<slot />
-	</body>
+  <CommonHead title={title}/>
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style is:global>
@@ -58,8 +64,118 @@ body {
   background-color: var(--bg);
 }
 
+p {
+  margin: 0.7rem 0;
+}
+
 a {
   color: var(--orange);
   text-decoration: none;
+}
+
+/* bold properties */
+b, strong {
+  font-weight: bold;
+  color: var(--blue5);
+}
+
+/* header properties */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--teal);
+  font-weight: bold;
+}
+
+/* indented and highlighted blocks of words */
+blockquote {
+  background-color: var(--bg_highlight);
+  border-radius: 3px;
+  border-left: 3px solid;
+  border-color: var(--blue5);
+  margin: 1em 0;
+  padding: 0.1em 0.5rem;
+  page-break-inside: avoid;
+  width: 62%;
+}
+
+/* code blocks */
+code, pre {
+  border-radius: 3px;
+}
+
+code {
+  margin: 0 2px;
+  padding: 0 5px;
+}
+
+pre {
+  line-height: 1.25em;
+  padding: 6px 10px;
+  overflow: auto;
+}
+
+pre > code {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* table, table headers and rows */
+table, th, td {
+  border: 2px solid;
+  border-color: var(--dark3);
+  border-collapse: collapse;
+}
+
+/* Table headers and rows */
+th, td {
+  padding: .5rem;
+}
+
+/* Visible line breaks */
+hr {
+  color: var(--blue7);
+  background-color: var(--blue7);
+  border-radius: 3px;
+  height: 3px;
+}
+
+/* SVG images */
+svg {
+  margin: auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  stroke: var(--orange);
+  stroke-width: 5px;
+  max-height: auto;
+  max-width: 150%;
+}
+
+/* Set circle fill for svg */
+circle {
+  fill: var(--orange);
+}
+
+/* Bitmap images */
+img {
+  max-width: 75%;
+  height: auto;
+  display: block;
+}
+
+iframe {
+  max-width: 100%;
+  margin: 2rem auto;
+  border-radius: 3px;
+  border: 0;
+  display: block;
+}
+
+ul {
+  list-style: circle outside;
+  margin: 0 0.5rem;
+}
+
+i {
+  padding: .2rem;
 }
 </style>

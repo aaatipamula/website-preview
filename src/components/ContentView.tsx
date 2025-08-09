@@ -20,6 +20,7 @@ const ContentView= ({ pages, slug, fileTree }: Props) => {
 
   const openPage = (slug: string) => {
     const activePage = pages.find(p => p.slug === slug)!
+    // Only update open pages if the page is not already open
     if (!openPages.some(p => p.slug === activePage.slug)) {
       setOpenPages(p => [...p, activePage]) 
     }
@@ -42,7 +43,6 @@ const ContentView= ({ pages, slug, fileTree }: Props) => {
         if (newPages.length > 0) {
           // Prefer next tab if it exists, otherwise previous one
           const nextIndex = Math.min(closedTabIndex, newPages.length - 1);
-          console.log(newPages[nextIndex]);
           setActiveTab(newPages[nextIndex]);
         }
       }
@@ -52,6 +52,7 @@ const ContentView= ({ pages, slug, fileTree }: Props) => {
   };
 
 
+  // Update page history when activeTab changes
   useEffect(() => {
     history.pushState({}, '', activeTab.slug);
   }, [activeTab]);
@@ -59,9 +60,19 @@ const ContentView= ({ pages, slug, fileTree }: Props) => {
   return (
     <div class={styles.componentContainer}>
       <div class={styles.fileTreeContainer}>
-        <h3>File Tree</h3>
-        {fileTree.map(tree => (
-          <FileTree node={tree} activeTab={activeTab.slug} click={openPage}/>
+        <button 
+          class={styles.websiteHeader}
+          onClick={() => openPage('/about')}
+        >
+          aniketh.dev
+        </button>
+        {fileTree.map(node => (
+          <FileTree 
+            node={node}
+            click={openPage}
+            activeTab={activeTab.slug}
+            key={node.name}
+          />
         ))}
       </div>
       <div class={styles.contentContainer}>
@@ -72,12 +83,11 @@ const ContentView= ({ pages, slug, fileTree }: Props) => {
               class={`${styles.pageTab} ${page.slug === activeTab.slug && styles.activeTab}`}
             >
               {page.slug || 'index'}.md
-              <span
+              <i
+                class="bi bi-x-lg"
                 onClick={e => { e.stopPropagation(); closeTab(page.slug) }}
-                style={{ padding: '0.5rem' }}
-              >
-                ✖
-              </span>
+                style={{ paddingLeft: '0.5rem', color: 'var(--red)' }}
+              ></i>
             </button>
           ))}
         </div>

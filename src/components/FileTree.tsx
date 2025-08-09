@@ -43,6 +43,7 @@ const FileTree = ({ node, activeTab, click }: Props) => {
           onClick={() => click(node.slug!)}
           class={`${styles.fileButton} ${isActive && styles.purpleText}`}
         >
+          <i class="bi bi-markdown" style={{ marginRight: '0.5rem'}}></i>
           {node.name}.md
         </button>
       )}
@@ -51,3 +52,4 @@ const FileTree = ({ node, activeTab, click }: Props) => {
 }
 
 export default FileTree;
+

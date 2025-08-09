@@ -1,6 +1,88 @@
-<div>
+---
+import Socials from '@components/Socials.astro';
+import { getGitInfo } from 'src/util/gitInfo';
 
+const { branch, commit } = getGitInfo();
+const baseUrl = 'https://github.com/aaatipamula/aaatipamula.github.io/commit/'
+---
+
+<div class="container">
+  <div class="left">
+    <div class="mode-indicator">
+      NORMAL
+    </div>
+    <div class="git-info">
+      <i style={{ color: 'var(--blue)'}} class="bi bi-git"></i>
+      <span class="git-branch">
+        {branch}
+      </span>
+      <a href={baseUrl + commit} class="git-commit">
+        #{commit}
+      </a>
+    </div>
+  </div>
+
+  <div class="center">
+    Made by Aniketh Aatipamula
+  </div>
+
+  <div class="right">
+    <Socials
+      linkedin='https://www.linkedin.com/in/aniketh-aatipamula-a0a120150/'
+      github='https://github.com/aaatipamula'
+    />
+  </div>
 </div>
 
 <style>
+.container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-color: var(--bg_dark);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 0.2rem;
+}
+
+.left, .center, .right {
+  flex: 1;
+  text-align: center;
+}
+
+.left {
+  display: flex;
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.mode-indicator {
+  background-color: var(--blue);
+
+  color: var(--bg);
+  font-weight: bold;
+  padding: 0 0.2rem;
+}
+
+.git-info {
+  padding: 0 0.2rem;
+  background-color: var(--bg_highlight);
+}
+
+.git-branch {
+  color: var(--blue);
+}
+
+.git-commit {
+  margin-left: 0.5rem;
+  color: var(--teal);
+}
 </style>

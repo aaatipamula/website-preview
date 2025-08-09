@@ -11,18 +11,22 @@ interface Props {
   slug: string;
 }
 
+const DEFAULT_PAGE = '/about';
 
 export const getStaticPaths = (() => {
-  const DEFAULT_PAGE = '/about';
   const pageGlob = import.meta.glob<MarkdownPage>(
     '../content/pages/**/*.md',
     { eager: true }
   );
   const markdownPages = Object.values(pageGlob);
-  return markdownPages.map(page => ({ params: { slug: page.url || DEFAULT_PAGE } }));
+  const pages = markdownPages.map(page => ({ params: { slug: page.url } }));
+  pages.push({ params: { slug: undefined } })
+  return pages;
 }) satisfies GetStaticPaths;
 
-const { slug } = Astro.params;
+let { slug } = Astro.params;
+
+slug = slug ? '/' + slug : DEFAULT_PAGE;
 
 // Generate pages to send to Preact component
 const pageGlob = import.meta.glob<MarkdownPage>(
@@ -45,7 +49,7 @@ const fileTree = buildFileTree(pages);
   <ContentView 
     fileTree={fileTree}
     pages={pages}
-    slug={'/' + slug}
+    slug={slug}
     client:visible
   />
   <Footer/>

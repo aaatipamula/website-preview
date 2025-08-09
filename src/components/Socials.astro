@@ -10,46 +10,54 @@ interface Props {
 
 const { linkedin, twitter, github, instagram, youtube, discord } = Astro.props;
 ---
+<span>
+  {linkedin && (
+    <a target="_blank" rel="noreferrer noopener" href={linkedin}>
+      <i class="bi bi-linkedin"></i>
+    </a>
+  )}
 
-{linkedin && (
-  <a href={linkedin}>
-    <i class="bi bi-linkedin"></i>
-  </a>
-)}
+  {twitter && (
+    <a target="_blank" rel="noreferrer noopener" href={twitter}>
+      <i class="bi bi-twitter"></i>
+    </a>
+  )}
 
-{twitter && (
-  <a href={twitter}>
-    <i class="bi bi-twitter"></i>
-  </a>
-)}
+  {github && (
+    <a target="_blank" rel="noreferrer noopener" href={github}>
+      <i class="bi bi-github"></i>
+    </a>
+  )}
 
-{github && (
-  <a href={github}>
-    <i class="bi bi-github"></i>
-  </a>
-)}
+  {instagram && (
+    <a target="_blank" rel="noreferrer noopener" href={instagram}>
+      <i class="bi bi-instagram"></i>
+    </a>
+  )}
 
-{instagram && (
-  <a href={instagram}>
-    <i class="bi bi-instagram"></i>
-  </a>
-)}
+  {youtube && (
+    <a target="_blank" rel="noreferrer noopener" href={youtube}>
+      <i class="bi bi-youtube"></i>
+    </a>
+  )}
 
-{youtube && (
-  <a href={youtube}>
-    <i class="bi bi-youtube"></i>
-  </a>
-)}
-
-{discord && (
-  <a href={discord}>
-    <i class="bi bi-discord"></i>
-  </a>
-)}
+  {discord && (
+    <a target="_blank" rel="noreferrer noopener" href={discord}>
+      <i class="bi bi-discord"></i>
+    </a>
+  )}
+</span>
 
 <style>
 a {
   padding: 0.3rem;
-  margin: 0 0.2rem;
+}
+
+a:hover {
+  opacity: 70%;
+}
+
+span {
+  background-color: var(--bg_highlight);
 }
 </style>

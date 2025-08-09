@@ -3,7 +3,7 @@ import Socials from '@components/Socials.astro';
 import { getGitInfo } from 'src/util/gitInfo';
 
 const { branch, commit } = getGitInfo();
-const baseUrl = 'https://github.com/aaatipamula/aaatipamula.github.io/commit/'
+const commitUrl = `https://github.com/${import.meta.env.PUBLIC_GH_URL}/commit/${commit}`
 ---
 
 <div class="container">
@@ -16,7 +16,7 @@ const baseUrl = 'https://github.com/aaatipamula/aaatipamula.github.io/commit/'
       <span class="git-branch">
         {branch}
       </span>
-      <a href={baseUrl + commit} class="git-commit">
+      <a href={commitUrl} class="git-commit">
         #{commit}
       </a>
     </div>

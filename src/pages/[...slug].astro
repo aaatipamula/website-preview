@@ -6,12 +6,12 @@ import Layout from '@layouts/Layout.astro';
 import ContentView from '@components/ContentView.tsx';
 import Footer from '@components/Footer.astro';
 import { buildFileTree } from 'src/util/trie.ts'
+import { generateSystem } from 'src/util/lsystem.ts';
+import { DEFAULT_PAGE, L_SYSTEM } from '/src/data/const.ts';
 
 interface Props {
   slug: string;
 }
-
-const DEFAULT_PAGE = '/about';
 
 export const getStaticPaths = (() => {
   const pageGlob = import.meta.glob<MarkdownPage>(
@@ -38,6 +38,7 @@ const pagePromises = values.map(async page => ({
   slug: page.url,
   title: page.frontmatter.title,
   content: await page.compiledContent(),
+  lSystem: generateSystem(page.url!, L_SYSTEM),
 } as TabPage));
 
 const pages = await Promise.all(pagePromises);
@@ -47,6 +48,7 @@ const fileTree = buildFileTree(pages);
 
 <Layout>
   <ContentView 
+    degrees={L_SYSTEM.degrees}
     fileTree={fileTree}
     pages={pages}
     slug={slug}

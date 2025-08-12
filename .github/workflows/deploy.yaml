@@ -23,7 +23,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v4
         env:
-          PUBLIC_GH_URL: 'aaatipamula/website-preview'
+          PUBLIC_GH_URL: ${{ github.repository }}
 
   deploy:
     needs: build

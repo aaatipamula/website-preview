@@ -11,5 +11,7 @@ export type TabPage = {
   slug: string;
   title: string;
   content: string;
+  lSystem: string;
+  degrees: number;
 };
 

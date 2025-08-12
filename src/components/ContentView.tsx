@@ -4,14 +4,16 @@ import type { TrieNode } from 'src/types/trie';
 import { useEffect, useState } from 'preact/hooks';
 import styles from './ContentView.module.css';
 import FileTree from './FileTree';
+import System from './System';
 
 interface Props {
+  degrees: number;
   fileTree: TrieNode[];
   pages: TabPage[];
   slug: string;
 }
 
-const ContentView= ({ pages, slug, fileTree }: Props) => {
+const ContentView= ({ degrees, pages, slug, fileTree }: Props) => {
   // NOTE: Should never be undefined as all slugs are determined at build time
   const activePage = pages.find(p => p.slug === slug)
 
@@ -51,14 +53,28 @@ const ContentView= ({ pages, slug, fileTree }: Props) => {
     });
   };
 
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.ctrlKey && event.code === 'KeyX') {
+      event.preventDefault();
+      closeTab(activeTab.slug);
+    }
+  };
 
   // Update page history when activeTab changes
   useEffect(() => {
     history.pushState({}, '', activeTab.slug);
   }, [activeTab]);
 
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    }
+  });
+
   return (
     <div class={styles.componentContainer}>
+      <System system={activeTab.lSystem} degrees={degrees} />
       <div class={styles.fileTreeContainer}>
         <button 
           class={styles.websiteHeader}

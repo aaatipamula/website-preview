@@ -19,6 +19,7 @@ const ContentView= ({ degrees, pages, slug, fileTree }: Props) => {
 
   const [activeTab, setActiveTab] = useState(activePage!); 
   const [openPages, setOpenPages] = useState(activePage ? [activePage] : []);
+  const [open, setOpen] = useState(false);
 
   const openPage = (slug: string) => {
     const activePage = pages.find(p => p.slug === slug)!
@@ -75,7 +76,18 @@ const ContentView= ({ degrees, pages, slug, fileTree }: Props) => {
   return (
     <div class={styles.componentContainer}>
       <System system={activeTab.lSystem} degrees={degrees} />
-      <div class={styles.fileTreeContainer}>
+
+      <button
+        onClick={() => setOpen(s => !s)}
+        class={styles.toggleButton}
+      >
+        <i class="bi bi-list"></i>
+      </button>
+
+      <div 
+        class={styles.fileTreeContainer + ` ${open ? styles.open : ''}`}
+        onClick={() => setOpen(s => !s)}
+      >
         <button 
           class={styles.websiteHeader}
           onClick={() => openPage('/about')}
@@ -91,12 +103,13 @@ const ContentView= ({ degrees, pages, slug, fileTree }: Props) => {
           />
         ))}
       </div>
+
       <div class={styles.contentContainer}>
         <div class={styles.tabListContainer}>
           {openPages.map(page => (
             <button
               onClick={() => setActiveTab(page)}
-              class={`${styles.pageTab} ${page.slug === activeTab.slug && styles.activeTab}`}
+              class={styles.pageTab + ` ${page.slug === activeTab.slug ? styles.activeTab : ''}`}
             >
               {page.slug || 'index'}.md
               <i

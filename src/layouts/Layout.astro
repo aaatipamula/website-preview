@@ -91,11 +91,17 @@ blockquote {
   border-radius: 3px;
   border-left: 3px solid;
   border-color: var(--blue5);
+
   margin: 1em 0;
   padding: 0.1em 0.5rem;
+
   page-break-inside: avoid;
-  width: 62%;
+
+  @media (min-width: 786px) {
+    width: 62%;
+  }
 }
+
 
 /* code blocks */
 code, pre {
@@ -103,8 +109,10 @@ code, pre {
 }
 
 code {
+  background-color: var(--bg_highlight);
   margin: 0 2px;
   padding: 0 5px;
+  border: 1px var(--comment) solid;
 }
 
 pre {

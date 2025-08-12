@@ -5,9 +5,11 @@ import type { MarkdownPage, TabPage } from '../types/content';
 import Layout from '@layouts/Layout.astro';
 import ContentView from '@components/ContentView.tsx';
 import Footer from '@components/Footer.astro';
+import Signature from '@components/Signature.astro';
+
 import { buildFileTree } from 'src/util/trie.ts'
 import { generateSystem } from 'src/util/lsystem.ts';
-import { DEFAULT_PAGE, L_SYSTEM } from '/src/data/const.ts';
+import { DEFAULT_PAGE, L_SYSTEM } from 'src/data/const.ts';
 
 interface Props {
   slug: string;
@@ -47,6 +49,7 @@ const fileTree = buildFileTree(pages);
 ---
 
 <Layout>
+  <!-- <Signature /> -->
   <ContentView 
     degrees={L_SYSTEM.degrees}
     fileTree={fileTree}

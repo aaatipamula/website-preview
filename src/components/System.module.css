@@ -33,10 +33,12 @@
   border: 2px var(--blue7) solid;
   border-radius: 7px;
 
+  overflow: auto;
+
   width: 60%;
   max-height: 60%;
 
-  padding: 2rem;
+  padding: 0.5rem 2rem 2rem 2rem;
 }
 
 .systemTextContainer {

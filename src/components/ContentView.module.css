@@ -4,13 +4,13 @@
 }
 
 .fileTreeContainer {
-  padding: 0 0.5rem;
+  padding: 0 1.5rem;
   background-color: var(--bg_dark1);
 
   z-index: 10;
 
   position: fixed;
-  top: 2rem;
+  top: 0;
   bottom: 0;
 
   transform: translateX(-100%);
@@ -46,15 +46,13 @@
   top: 0;
   right: 0;
 
-  padding: 0.5rem;
-
   z-index: 10;
 
   text-align: center;
   text-decoration: none;
 
+  background-color: var(--bg_dark);
   font: inherit;
-  background: none;
   border: none;
   cursor: pointer;
 

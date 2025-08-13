@@ -81,7 +81,11 @@ const ContentView= ({ degrees, pages, slug, fileTree }: Props) => {
         onClick={() => setOpen(s => !s)}
         class={styles.toggleButton}
       >
-        <i class="bi bi-list"></i>
+        {open ? (
+          <i class="bi bi-x-lg" style={{ fontSize: '1.5rem', color: 'var(--red)' }}></i>
+        ) : (
+          <i class="bi bi-list" style={{ fontSize: '1.5rem', color: 'var(--blue5)' }}></i>
+        )}
       </button>
 
       <div 

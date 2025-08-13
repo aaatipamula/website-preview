@@ -41,18 +41,28 @@ const commitUrl = `https://github.com/${import.meta.env.PUBLIC_GH_URL}/commit/${
   left: 0;
   right: 0;
 
-  height: 1rem;
+  height: 2rem;
 
   background-color: var(--bg_dark);
 
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .left, .center, .right {
   flex: 1;
   text-align: center;
+  height: 100%;
+}
+
+.center {
+  display: none; 
+
+  padding: 0.5rem 0;
+
+  @media (min-width: 768px) {
+    display: initial;
+  }
 }
 
 .left {
@@ -70,11 +80,22 @@ const commitUrl = `https://github.com/${import.meta.env.PUBLIC_GH_URL}/commit/${
   color: var(--bg);
   font-weight: bold;
   padding: 0 0.2rem;
+
+  display: flex;
+  align-items: center;   /* vertical */
 }
 
 .git-info {
-  padding: 0 0.2rem;
+  padding: 0 0.5rem;
   background-color: var(--bg_highlight);
+
+  /* display: none; */ 
+
+  /* @media (min-width: 768px) { */
+    display: flex;
+    align-items: center;
+
+  /* } */
 }
 
 .git-branch {

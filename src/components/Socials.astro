@@ -10,7 +10,7 @@ interface Props {
 
 const { linkedin, twitter, github, instagram, youtube, discord } = Astro.props;
 ---
-<span>
+<div>
   {linkedin && (
     <a target="_blank" rel="noreferrer noopener" href={linkedin}>
       <i class="bi bi-linkedin"></i>
@@ -46,7 +46,7 @@ const { linkedin, twitter, github, instagram, youtube, discord } = Astro.props;
       <i class="bi bi-discord"></i>
     </a>
   )}
-</span>
+</div>
 
 <style>
 a {
@@ -57,7 +57,11 @@ a:hover {
   opacity: 70%;
 }
 
-span {
+div {
+  display: flex;
+  align-items: center;
+  float: right;
   background-color: var(--bg_highlight);
+  height: 100%;
 }
 </style>

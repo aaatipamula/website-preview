@@ -6,6 +6,13 @@
   opacity: 40%;
 
   cursor: pointer;
+
+  /* TODO: have a button display the tree on mobile */
+  display: none;
+
+  @media (min-width: 768px) {
+    display: unset;
+  }
 }
 
 .modalBackdrop {

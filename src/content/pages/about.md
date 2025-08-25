@@ -1,6 +1,4 @@
 ---
-title: about
-author: aniketh
 ---
 
 # About Me
@@ -16,5 +14,8 @@ Artist Spotlights:
 - [MASS OF THE FERMENTING DREGS](https://open.spotify.com/artist/14d5KCX9nprUcxnKIShrr1?si=TqtFAvw3SUWuIEfDY9POew)
 - [Satellite Lovers](https://www.youtube.com/watch?v=l--Uma_iDkI)
 
-Also check out my [digital garden](https://garden.aniketh.dev).
+Check out a few of my other websites:
+
+- [sandbox.aniketh.dev](https://sandbox.aniketh.dev) - *A collection of random pages*
+- [garden.aniketh.dev](https://garden.aniketh.dev) - *Some notes n stuff*
 

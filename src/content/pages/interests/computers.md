@@ -1,6 +1,5 @@
 ---
 title: Custom Mech Keyboards
-permalink: /interests/computers
 ---
 # Custom Mechanical Keyboards
 
@@ -54,7 +53,7 @@ Anyways, after building that first keyboard I dove headfirst into the hobby, buy
       <td>SKErgo</td>
       <td>Gateron Ink Blacks</td>
       <td>GMK Olivia</td>
-      <td>My first ergo board</td>
+      <td>My first of many ergo boards</td>
     </tr>
     <tr>
       <td>Corne V3</td>
@@ -69,10 +68,10 @@ Anyways, after building that first keyboard I dove headfirst into the hobby, buy
       <td>I designed this board! Check it out <a href="https://github.com/aaatipamula/butterfly">here</a>!</td>
     </tr>
     <tr>
-      <td>Devastating TKL</td>
-      <td>Cherry MX Purples</td>
-      <td>GMK Rainy Day</td>
-      <td></td>
+      <td>QK Alice Duo</td>
+      <td>CK Mauve (JWK)</td>
+      <td>CK Greyscale</td>
+      <td>This is a really cool one, look it up!</td>
     </tr>
   </table>
 </div>

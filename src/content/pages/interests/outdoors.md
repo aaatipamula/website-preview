@@ -1,6 +1,4 @@
 ---
-title: 
-permalink: /interests/outdoors
 ---
 
 # Hiking/Backpacking
@@ -17,5 +15,5 @@ From there I have been on a few more hiking trips. The most recent one I enjoyed
 
 It's main appeal to me is the peace and quiet you usually get with it. It's just you and nature. I don't like bringing along a ton of gadgets and things with me. I just like to enjoy the scenery around me, make some good camping food, and sit by a warm fire at night. 
 
-Hot take, maybe, but I like winter camping much better than spring/summer/fall. It does require more gear so you don't freeze, but the weather is just part of the challenge and appeal to me.
+Hot take but I like winter camping (haha punny) much better than spring/summer/fall. It does require more gear so you don't freeze, but the weather is just part of the challenge and appeal to me.
 

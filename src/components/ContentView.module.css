@@ -27,6 +27,7 @@
 .websiteHeader {
   font: inherit;
   color: var(--teal);
+  text-shadow: var(--tshadow) var(--teal);
   text-align: center;
   font-weight: bold;
   font-size: 24px;
@@ -85,6 +86,7 @@
   padding: 0.5rem;
 
   color: var(--fg_gutter);
+  text-shadow: var(--tshadow) var(--fg_gutter);
   text-align: center;
   text-decoration: none;
 
@@ -101,6 +103,7 @@
 .activeTab {
   background-color: var(--bg);
   color: var(--fg);
+  text-shadow: var(--tshadow) var(--fg);
 }
 
 .mdContainer {

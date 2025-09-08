@@ -82,9 +82,9 @@ const ContentView= ({ degrees, pages, slug, fileTree }: Props) => {
         class={styles.toggleButton}
       >
         {open ? (
-          <i class="bi bi-x-lg" style={{ fontSize: '1.5rem', color: 'var(--red)' }}></i>
+          <i class="bi bi-x-lg" style={{ fontSize: '1.5rem', color: 'var(--red)', textShadow: 'var(--tshadow) var(--red)' }}></i>
         ) : (
-          <i class="bi bi-list" style={{ fontSize: '1.5rem', color: 'var(--blue5)' }}></i>
+          <i class="bi bi-list" style={{ fontSize: '1.5rem', color: 'var(--blue5)', textShadow: 'var(--tshadow) var(--blue5)' }}></i>
         )}
       </button>
 
@@ -119,7 +119,7 @@ const ContentView= ({ degrees, pages, slug, fileTree }: Props) => {
               <i
                 class="bi bi-x-lg"
                 onClick={e => { e.stopPropagation(); closeTab(page.slug) }}
-                style={{ paddingLeft: '0.5rem', color: 'var(--red)' }}
+                style={{ paddingLeft: '0.5rem', color: 'var(--red)', textShadow: 'var(--tshadow) var(--red)' }}
               ></i>
             </button>
           ))}

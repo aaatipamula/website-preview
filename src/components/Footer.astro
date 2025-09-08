@@ -12,7 +12,7 @@ const commitUrl = `https://github.com/${import.meta.env.PUBLIC_GH_URL}/commit/${
       NORMAL
     </div>
     <div class="git-info">
-      <i style={{ color: 'var(--blue)'}} class="bi bi-git"></i>
+      <i style={{ color: 'var(--blue)', textShadow: 'var(--tshadow) var(--blue)' }} class="bi bi-git"></i>
       <span class="git-branch">
         {branch}
       </span>
@@ -78,6 +78,7 @@ const commitUrl = `https://github.com/${import.meta.env.PUBLIC_GH_URL}/commit/${
   background-color: var(--blue);
 
   color: var(--bg);
+  text-shadow: 0 0 2px var(--bg);
   font-weight: bold;
   padding: 0 0.2rem;
 
@@ -100,11 +101,13 @@ const commitUrl = `https://github.com/${import.meta.env.PUBLIC_GH_URL}/commit/${
 
 .git-branch {
   color: var(--blue);
+  text-shadow: var(--tshadow) var(--blue);
 }
 
 .git-commit {
   margin-left: 0.5rem;
   color: var(--teal);
+  text-shadow: var(--tshadow) var(--teal);
 }
 
 .git-commit:hover {
